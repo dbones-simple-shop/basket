@@ -17,7 +17,7 @@ jobs:
             APP_VERSION=$(cat version)
             echo $APP_VERSION
 
-            dotnet restore --packages packages -s https://www.myget.org/F/simple-shop/api/v3/index.json
+            dotnet restore --packages packages -s https://www.myget.org/F/simple-shop/api/v3/index.json -s https://api.nuget.org/v3/index.json
             dotnet build --no-restore --configuration Release /p:Version=${APP_VERSION}
             dotnet pack --no-build --no-restore --configuration Release --output ../nupkgs /p:Version=${APP_VERSION}
       - persist_to_workspace:
@@ -39,7 +39,7 @@ jobs:
           cd nupkgs
           
           ls
-          dotnet nuget push *.nupkg -k ${nugetapi} -s https://www.myget.org/F/simple-shop/api/v3/index.json -s https://api.nuget.org/v3/index.json
+          dotnet nuget push *.nupkg -k ${nugetapi} -s https://www.myget.org/F/simple-shop/api/v3/index.json
 
   publish_docker:
     docker:
