@@ -53,10 +53,9 @@ jobs:
           ls
           APP_VERSION=$(cat src/version)
           echo $APP_VERSION
-
-          ls src/Basket/bin/Release/netcoreapp2.2
+          
           docker login -u $dockeruser -p $dockerpassword
-          docker build -t dbonessimplestore/basket:latest -t dbonessimplestore/basket:APP_VERSION .
+          docker build -t dbonessimplestore/basket:latest -t dbonessimplestore/basket:$APP_VERSION .
           docker push dbonessimplestore/basket
 
 workflows:
