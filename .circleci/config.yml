@@ -39,7 +39,7 @@ jobs:
           cd nupkgs
           
           ls
-          dotnet nuget push *.nupkg -k ${nugetapi} -s https://www.myget.org/F/simple-shop/api/v3/index.json
+          dotnet nuget push *.nupkg -k ${nugetapi} -s https://www.myget.org/F/simple-shop/api/v3/index.json -s https://api.nuget.org/v3/index.json
 
   publish_docker:
     docker:
