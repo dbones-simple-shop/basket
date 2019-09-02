@@ -23,6 +23,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
+            - src/Basket/bin
             - src/nupkgs
             - src/version
             - Dockerfile
