@@ -18,8 +18,16 @@ jobs:
             echo $APP_VERSION
 
             dotnet restore --packages packages -s https://www.myget.org/F/simple-shop/api/v3/index.json -s https://api.nuget.org/v3/index.json
-            dotnet build --no-restore --configuration Release /p:Version=${APP_VERSION}
-            dotnet pack --no-build --no-restore --configuration Release --output ../nupkgs /p:Version=${APP_VERSION}
+            dotnet msbuild /target:Build /p:Configuration=Release /p:Version=${APP_VERSION}
+
+            mkdir ./nupkgs
+            mv **/bin/**/*.nupkg ./nupkgs
+
+            cd nupkgs
+            rm *.symbols.nupkg
+            pwd
+            ls
+
       - persist_to_workspace:
           root: .
           paths:
