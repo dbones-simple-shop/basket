@@ -4,7 +4,6 @@ metadata:
   namespace: basket
   name: basket
 spec:
-  paused: true
   template:
     metadata:
       labels:
@@ -26,12 +25,11 @@ spec:
             periodSeconds: 2
             successThreshold: 2
             timeoutSeconds: 2
-          resources:
-            limits:
-              cpu: 250
-              memory: 512Mi
-            requests:
-              memory: 256Mi
+          # resources:
+          #   limits:
+          #     memory: 512Mi
+          #   requests:
+          #     memory: 256Mi
           volumeMounts:
             - name: config
               mountPath: /app/config
