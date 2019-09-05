@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: basket
-          image: dbonessimplestore/basket
+          image: dbonessimplestore/basket:latest
           imagePullPolicy: Always
           resources:
             limits:
