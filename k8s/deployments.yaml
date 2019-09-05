@@ -22,24 +22,10 @@ spec:
               memory: 512Mi
             requests:
               memory: 256Mi
-          env:
-            - name: redis__connectionString
-              valueFrom:
-                configMapKeyRef:
-                  name: serviceconfig
-                  key: redis__connectionString
-            - name: bus_host
-              valueFrom:
-                configMapKeyRef:
-                  name: serviceconfig
-                  key: bus_host
-            - name: logging__logger
-              valueFrom:
-                configMapKeyRef:
-                  name: serviceconfig
-                  key: logging__logger
-            - name: logging__logLevel__default
-              valueFrom:
-                configMapKeyRef:
-                  name: serviceconfig
-                  key: logging__logLevel__default
+      volumes:
+        - name: config
+          configMap:
+            name: serviceconfig
+            items:
+              - key: svcconfig
+                path: /app/stagesettings.json

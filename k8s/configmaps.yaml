@@ -7,8 +7,24 @@ metadata:
     app: simple-shop
     team: alpha
 data:
-  redis__connectionString: cache.data
-  bus_host: queue.data
-  logging__logger: fluentd
-  logging__logLevel__default: Information
+  svcconfig: |-
+    {
+      "logging": {
+        "logLevel": {
+          "default": "Information"
+        },
+        "logger": "fluentd"
+      },
+      
+      "bus": {
+        "receiveEndpoint": "basket",
+        "host": "queue.data",
+        "username": "guest",
+        "password": "guest"
+      },
+      
+      "redis":{
+        "connectionString": "cache.data"
+      }
+    }
 
