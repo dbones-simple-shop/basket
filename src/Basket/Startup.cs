@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Core.Infrastructure.HealthChecks;
 
 namespace Core.Infrastructure
 {
@@ -44,6 +45,8 @@ namespace Core.Infrastructure
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.ConfigureApplicationHealthCheck();
 
             app.UseCors("CorsPolicy");
 

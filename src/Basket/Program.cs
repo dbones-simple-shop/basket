@@ -2,6 +2,7 @@
 using Core.Infrastructure.Application;
 using Core.Infrastructure.Logging;
 using Core.Infrastructure.Marten;
+ using Core.Infrastructure.HealthChecks;
 using Core.Infrastructure.MassTransit;
 using Core.Infrastructure.Redis;
 using Core.Infrastructure.Serializing;
@@ -38,6 +39,7 @@ namespace Basket
                 .ConfigureLogging()
                 //.ConfigureMartin()
                 .ConfigureSwagger()
+                .ConfigureHeathChecks()
                 .ConfigureSerializer()
                 .ConfigureRedis()
                 .ConfigureMassTransit()
