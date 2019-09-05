@@ -18,7 +18,7 @@ jobs:
             echo $APP_VERSION
 
             dotnet restore --packages packages -s https://www.myget.org/F/simple-shop/api/v3/index.json -s https://api.nuget.org/v3/index.json
-            dotnet msbuild /target:Build /p:Configuration=Release /p:Version=${APP_VERSION}
+            dotnet build --no-restore --configuration Release --force -p:Version=${APP_VERSION}
 
             mkdir ./nupkgs
             mv **/bin/**/*.nupkg ./nupkgs
