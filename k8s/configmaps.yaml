@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: basket
+  name: serviceconfig
+  labels:
+    app: simple-shop
+    team: alpha
+data:
+  redis__connectionString: cache.data
+  bus_host: queue.data
+  logging__logger: fluentd
+  logging__logLevel__default: Information
+

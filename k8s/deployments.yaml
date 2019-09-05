@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: basket
+  name: basket
+spec:
+  paused: true
+  template:
+    metadata:
+      labels:
+        app: simple-shop
+        component: basket
+        team: alpha
+    spec:
+      containers:
+        - name: basket
+          image: dbonessimplestore/basket
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: 250
+              memory: 512Mi
+            requests:
+              memory: 256Mi
+          env:
+            - name: redis__connectionString
+              valueFrom:
+                configMapKeyRef:
+                  name: serviceconfig
+                  key: redis__connectionString
+            - name: bus_host
+              valueFrom:
+                configMapKeyRef:
+                  name: serviceconfig
+                  key: bus_host
+            - name: logging__logger
+              valueFrom:
+                configMapKeyRef:
+                  name: serviceconfig
+                  key: logging__logger
+            - name: logging__logLevel__default
+              valueFrom:
+                configMapKeyRef:
+                  name: serviceconfig
+                  key: logging__logLevel__default
