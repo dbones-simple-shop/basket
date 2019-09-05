@@ -16,16 +16,29 @@ spec:
         - name: basket
           image: dbonessimplestore/basket:latest
           imagePullPolicy: Always
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /hc
+              port: 7001
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 2
+            successThreshold: 2
+            timeoutSeconds: 2
           resources:
             limits:
               cpu: 250
               memory: 512Mi
             requests:
               memory: 256Mi
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
       volumes:
         - name: config
           configMap:
             name: serviceconfig
             items:
               - key: svcconfig
-                path: /app/stagesettings.json
+                path: stagesettings.json

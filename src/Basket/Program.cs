@@ -22,7 +22,7 @@ namespace Basket
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile("stagesettings.json", true)
+                .AddJsonFile("./config/stagesettings.json", true)
                 .AddEnvironmentVariables()
                 .AddCommandLine(args)
                 .Build();
