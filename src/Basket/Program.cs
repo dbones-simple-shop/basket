@@ -23,16 +23,20 @@ namespace Basket
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile(Path.Combine("config", "stagesettings.json"))
-                //.AddEnvironmentVariables()
-                //.AddCommandLine(args)
+                .AddJsonFile(Path.Combine("config", "stagesettings.json"), true)
                 .Build();
+
 
             var port = configuration.GetSection("Application").Get<ApplicationConfiguration>().PortNumber;
 
             var host = WebHost.CreateDefaultBuilder(args)
-                
                 .UseConfiguration(configuration)
+                .ConfigureAppConfiguration(configBuilder =>
+                {
+                    //the Useconfig does not set this for all the application :(
+                    configBuilder.AddJsonFile(Path.Combine("config", "stagesettings.json"));
+                })
+
                 .ConfigureLogging((hostingContext, builder) =>
                 {
                     builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
