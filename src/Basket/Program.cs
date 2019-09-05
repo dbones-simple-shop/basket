@@ -13,6 +13,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace Basket
 {
@@ -22,11 +23,11 @@ namespace Basket
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile("/app/config/stagesettings.json", true)
-                .AddEnvironmentVariables()
-                .AddCommandLine(args)
+                .AddJsonFile(Path.Combine("config", "stagesettings.json"))
+                //.AddEnvironmentVariables()
+                //.AddCommandLine(args)
                 .Build();
-            
+
             var port = configuration.GetSection("Application").Get<ApplicationConfiguration>().PortNumber;
 
             var host = WebHost.CreateDefaultBuilder(args)
