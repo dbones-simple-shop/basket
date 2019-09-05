@@ -34,7 +34,7 @@ namespace Basket
                 .ConfigureAppConfiguration(configBuilder =>
                 {
                     //the Useconfig does not set this for all the application :(
-                    configBuilder.AddJsonFile(Path.Combine("config", "stagesettings.json"));
+                    configBuilder.AddJsonFile(Path.Combine("config", "stagesettings.json"), true);
                 })
 
                 .ConfigureLogging((hostingContext, builder) =>
@@ -58,6 +58,5 @@ namespace Basket
             host.Run();
         }
 
-      
     }
 }
