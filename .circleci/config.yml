@@ -83,7 +83,7 @@ jobs:
           curl -0 rancher https://1drv.ms/u/s!AtUs3LgpvuyCrRc_jzaTKXhcYX30?e=s2p4YD
           rancher -v
 
-          rancher login $rancher-url --skip-verify --token $rancher-token --context $rancher-context
+          rancher login $rancherurl --skip-verify --token $ranchertoken --context $ranchercontext
 
           rancher kubectl apply -f .
 
