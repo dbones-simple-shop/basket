@@ -80,7 +80,7 @@ jobs:
           pwd
           ls
 
-          curl -0 rancher https://1drv.ms/u/s!AtUs3LgpvuyCrRc_jzaTKXhcYX30?e=s2p4YD
+          curl -o rancher https://1drv.ms/u/s!AtUs3LgpvuyCrRc_jzaTKXhcYX30?e=s2p4YD
           rancher -v
 
           rancher login $rancherurl --skip-verify --token $ranchertoken --context $ranchercontext
