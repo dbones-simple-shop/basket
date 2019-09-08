@@ -2,13 +2,12 @@
 using Core.Infrastructure.Application;
 using Core.Infrastructure.Logging;
 using Core.Infrastructure.Marten;
- using Core.Infrastructure.HealthChecks;
+using Core.Infrastructure.HealthChecks;
 using Core.Infrastructure.MassTransit;
 using Core.Infrastructure.Redis;
 using Core.Infrastructure.Serializing;
 using Core.Infrastructure.Swagger;
 using Core.Infrastructure.Tracing;
-using Core.Infrastructure.WebApi;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -49,7 +48,6 @@ namespace Basket
                 .ConfigureRedis()
                 .ConfigureMassTransit()
                 .ConfigureTracing(configuration)
-                //.ConfigureWebApi()
                 .UseUrls($"http://*:{port}")
                 .UseKestrel()
                 .UseStartup<Startup>()
