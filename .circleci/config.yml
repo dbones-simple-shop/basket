@@ -76,7 +76,9 @@ jobs:
       - attach_workspace:
           at: ./
       - run: |
-          cd /k8s
+          ls
+          exit 0;
+          cd k8s
           pwd
           ls
 
@@ -100,7 +102,7 @@ workflows:
           context: build-ctx
           requires:
             - build
-      - deploy:
-          context: build-ctx
-          requires:
-            - publish_docker
+      # - deploy:
+      #     context: build-ctx
+      #     requires:
+      #       - publish_docker

@@ -22,6 +22,10 @@ data:
         "username": "guest",
         "password": "guest"
       },
+
+      "tracing": {
+        "jaegerUrl":"jaeger-collector.istio-system"
+      },
       
       "redis":{
         "connectionString": "cache.data"
