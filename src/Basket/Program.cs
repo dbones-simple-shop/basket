@@ -40,6 +40,7 @@ namespace Basket
                 {
                     builder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                 })
+                .ConfigureApplication()
                 .ConfigureLogging()
                 //.ConfigureMartin()
                 .ConfigureSwagger()
