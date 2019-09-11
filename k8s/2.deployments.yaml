@@ -13,18 +13,20 @@ spec:
     spec:
       containers:
         - name: basket
-          image: dbonessimplestore/basket:latest
+          image: dbonessimplestore/basket:1.0.108
           imagePullPolicy: Always
-          livenessProbe:
-            failureThreshold: 3
-            httpGet:
-              path: /hc
-              port: 7001
-              scheme: HTTP
-            initialDelaySeconds: 10
-            periodSeconds: 30
-            successThreshold: 1
-            timeoutSeconds: 2
+          ports:
+            - containerPort: 7001
+          # livenessProbe:
+          #   failureThreshold: 3
+          #   httpGet:
+          #     path: /hc
+          #     port: 7001
+          #     scheme: HTTP
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 30
+          #   successThreshold: 1
+          #   timeoutSeconds: 2
           readinessProbe:
             failureThreshold: 3
             httpGet:

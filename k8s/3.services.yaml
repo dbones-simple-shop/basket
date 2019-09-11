@@ -8,7 +8,10 @@ metadata:
   name: basket
 spec:
   ports:
-  - port: 7001
+  - name: http
+    protocol: TCP
+    port: 7001
+    targetPort: 7001
   selector:
     app: simple-shop
     component: basket
